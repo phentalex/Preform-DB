@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows.Forms;
 
 namespace Preform_DB
@@ -19,10 +20,13 @@ namespace Preform_DB
             InitializeComponent();
         }
 
+        private string stroka = Form1.stroka;
+
         private DataTable table;
 
-        private SqlDataAdapter adapter = new SqlDataAdapter();
+        private MySqlConnection con = null;
 
+        private MySqlDataAdapter adapter = null;
 
         private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -32,17 +36,14 @@ namespace Preform_DB
             dataGridView1.DataSource = table;
         }
 
-        Form1 f1 = new Form1();
-
         private void Form2_Load(object sender, EventArgs e)
         {
-            
-            adapter = new SqlDataAdapter("SELECT * FROM KA", );
+            con = new MySqlConnection(stroka);
+            con.Open();
+
+            adapter = new MySqlDataAdapter("SELECT * FROM KA", con);
             
             table = new DataTable();
-            
-            adapter.Fill(table);
-            dataGridView1.DataSource = table;
         }
     }
 }

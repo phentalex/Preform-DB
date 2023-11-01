@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Threading;
+using System.Data.SqlClient;
 
 namespace Preform_DB
 {
@@ -13,25 +14,28 @@ namespace Preform_DB
             InitializeComponent();
         }
 
+        public static string stroka = "Server=localhost,3006;Database=preform;Uid=root;pwd=3128";
+
         Form2 f2 = new Form2();
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try
+            using (MySqlConnection con = new MySqlConnection(stroka))
             {
-                string path = "Server=localhost;Database=preform;port=3306;Uid=root;pwd=3128";
-                MySqlConnection mycon = new MySqlConnection(path);
-                mycon.Open();
-                MessageBox.Show("DB CONNECTED");
-                this.Close();
-                th = new Thread(open);
-                th.SetApartmentState(ApartmentState.STA);
-                th.Start();
-                f2.LabelConn.Text = path;
-            }
-            catch
-            {
-                MessageBox.Show("CONNECTION FAILED");
+                try
+                {
+                    con.Open();
+                    MessageBox.Show("DB CONNECTED");
+                    this.Close();
+                    th = new Thread(open);
+                    th.SetApartmentState(ApartmentState.STA);
+                    th.Start();
+                    con.Close();
+                }
+                catch
+                {
+                    MessageBox.Show("CONNECTION FAILED");
+                }
             }
         }
         public void open(object obj)
