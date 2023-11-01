@@ -42,5 +42,10 @@ namespace Preform_DB
         {
             Application.Run(new Form2());
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
