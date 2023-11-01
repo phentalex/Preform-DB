@@ -30,9 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.LabelConn = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -48,14 +47,6 @@
             this.toolStrip1.Text = "Отобразить данные";
             this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 29);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(800, 423);
-            this.dataGridView1.TabIndex = 1;
-            // 
             // toolStripButton1
             // 
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -65,22 +56,19 @@
             this.toolStripButton1.Size = new System.Drawing.Size(119, 22);
             this.toolStripButton1.Text = "Отобразить данные";
             // 
-            // LabelConn
+            // dataGridView1
             // 
-            this.LabelConn.AutoSize = true;
-            this.LabelConn.Location = new System.Drawing.Point(503, 367);
-            this.LabelConn.Name = "LabelConn";
-            this.LabelConn.Size = new System.Drawing.Size(35, 13);
-            this.LabelConn.TabIndex = 2;
-            this.LabelConn.Text = "label1";
-            this.LabelConn.Visible = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 29);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(800, 423);
+            this.dataGridView1.TabIndex = 1;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.LabelConn);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "Form2";
@@ -99,6 +87,5 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
-        public System.Windows.Forms.Label LabelConn;
     }
 }
