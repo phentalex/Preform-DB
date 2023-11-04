@@ -25,7 +25,7 @@ namespace Preform_DB
                 try
                 {
                     con.Open();
-                    MessageBox.Show("DB CONNECTED");
+                    MessageBox.Show("БД ПОДКЛЮЧЕНА");
                     this.Close();
                     th = new Thread(open);
                     th.SetApartmentState(ApartmentState.STA);
@@ -34,7 +34,7 @@ namespace Preform_DB
                 }
                 catch
                 {
-                    MessageBox.Show("CONNECTION FAILED");
+                    MessageBox.Show("СОЕДИНЕНИЕ НЕ УСТАНОВЛЕНО", "ВНИМАНИЕ!");
                 }
             }
         }
