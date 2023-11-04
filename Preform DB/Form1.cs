@@ -16,7 +16,6 @@ namespace Preform_DB
 
         public static string stroka = "Server=localhost,3006;Database=preform;Uid=root;pwd=3128";
 
-        Form2 f2 = new Form2();
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -40,7 +39,7 @@ namespace Preform_DB
         }
         public void open(object obj)
         {
-            Application.Run(new Form2());
+            Application.Run(new Form_auth());
         }
 
         private void button2_Click(object sender, EventArgs e)

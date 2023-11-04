@@ -32,22 +32,32 @@ namespace Preform_DB
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            DataTable table_items = new DataTable();
-            table_items.Clear();
-            MySqlDataAdapter items = new MySqlDataAdapter("SELECT * FROM ITEMS", con);
+            DataTable table_product = new DataTable();
+            table_product.Clear();
+            MySqlDataAdapter items = new MySqlDataAdapter("SELECT * FROM products", con);
             
-            items.Fill(table_items);
-            dataGridView1.DataSource = table_items;
+            items.Fill(table_product);
+            dataGridView1.DataSource = table_product;
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            DataTable table_ka = new DataTable();
-            table_ka.Clear();
-            MySqlDataAdapter ka =  new MySqlDataAdapter("SELECT * FROM KA", con);
+            DataTable table_customer = new DataTable();
+            table_customer.Clear();
+            MySqlDataAdapter ka =  new MySqlDataAdapter("SELECT * FROM customers", con);
 
-            ka.Fill(table_ka);
-            dataGridView1.DataSource = table_ka;
+            ka.Fill(table_customer);
+            dataGridView1.DataSource = table_customer;
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            DataTable table_shipping = new DataTable();
+            table_shipping.Clear();
+            MySqlDataAdapter sales = new MySqlDataAdapter("SELECT * FROM shippings", con);
+
+            sales.Fill(table_shipping);
+            dataGridView1.DataSource = table_shipping;
         }
     }
 }
