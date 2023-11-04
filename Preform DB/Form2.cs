@@ -22,28 +22,32 @@ namespace Preform_DB
 
         private string stroka = Form1.stroka;
 
-        private DataTable table;
-
         private MySqlConnection con = null;
-
-        private MySqlDataAdapter adapter = null;
-
-        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-            table.Clear();
-
-            adapter.Fill(table);
-            dataGridView1.DataSource = table;
-        }
 
         private void Form2_Load(object sender, EventArgs e)
         {
             con = new MySqlConnection(stroka);
             con.Open();
+        }
 
-            adapter = new MySqlDataAdapter("SELECT * FROM KA", con);
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            DataTable table_items = new DataTable();
+            table_items.Clear();
+            MySqlDataAdapter items = new MySqlDataAdapter("SELECT * FROM ITEMS", con);
             
-            table = new DataTable();
+            items.Fill(table_items);
+            dataGridView1.DataSource = table_items;
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            DataTable table_ka = new DataTable();
+            table_ka.Clear();
+            MySqlDataAdapter ka =  new MySqlDataAdapter("SELECT * FROM KA", con);
+
+            ka.Fill(table_ka);
+            dataGridView1.DataSource = table_ka;
         }
     }
 }
