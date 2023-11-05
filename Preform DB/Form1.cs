@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Threading;
 using System.Data.SqlClient;
+using MySqlX.XDevAPI;
 
 namespace Preform_DB
 {
@@ -15,7 +16,7 @@ namespace Preform_DB
             StartPosition = FormStartPosition.CenterScreen;
         }
 
-        public static string stroka = "Server=localhost,3006;Database=preform;Uid=root;pwd=3128";
+        public static string stroka = "Server = 185.253.34.40,3323;" + "DATABASE = u304540_prefrom;" + "UID = u304540_admin;" + "PASSWORD = admin123;" + "connection timeout = 180";
 
 
         private void button1_Click(object sender, EventArgs e)
@@ -60,12 +61,12 @@ namespace Preform_DB
 
         private void button2_MouseEnter(object sender, EventArgs e)
         {
-            button1.Cursor = Cursors.Hand;
+            button2.Cursor = Cursors.Hand;
         }
 
         private void button2_MouseLeave(object sender, EventArgs e)
         {
-            button1.Cursor = Cursors.Default;
+            button2.Cursor = Cursors.Default;
         }
     }
 }

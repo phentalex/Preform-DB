@@ -55,7 +55,7 @@ namespace Preform_DB
             {
                 MessageBox.Show("Вы успешно вошли!", "Успех!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
-                th = new Thread(open);
+                th = new Thread(openTable);
                 th.SetApartmentState(ApartmentState.STA);
                 th.Start();
                 con.Close();
@@ -65,9 +65,14 @@ namespace Preform_DB
             }
         }
 
-        public void open(object obj)
+        public void openTable(object obj)
         {
             Application.Run(new Form2());
+        }
+
+        public void openReg(object obj)
+        {
+            Application.Run(new Form_reg());
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -88,9 +93,10 @@ namespace Preform_DB
 
         private void label4_Click(object sender, EventArgs e)
         {
-            Form_reg form_reg = new Form_reg();
-            this.Hide();
-            form_reg.ShowDialog();
+            this.Close();
+            th = new Thread(openReg);
+            th.SetApartmentState(ApartmentState.STA);
+            th.Start();
         }
 
         private void label4_MouseEnter(object sender, EventArgs e)

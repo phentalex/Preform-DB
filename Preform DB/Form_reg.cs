@@ -11,16 +11,20 @@ using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
 using System.Web;
 using System.Drawing.Text;
+using System.Threading;
 
 namespace Preform_DB
 {
     public partial class Form_reg : Form
     {
+
         public Form_reg()
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
         }
+
+        Thread th;
 
         private string stroka = Form1.stroka;
 
@@ -45,7 +49,12 @@ namespace Preform_DB
 
             MySqlCommand command = new MySqlCommand(querystring, con);
             con.Open();
-            if (checkUser())
+            if (checkUserInfo())
+            {
+                return;
+            }
+
+            if (checkUserLogin())
             {
                 return;
             }
@@ -63,7 +72,7 @@ namespace Preform_DB
                         MessageBox.Show("Аккант не создан!", "Ошибка!");
                     }
         }
-        private Boolean checkUser()
+        private Boolean checkUserInfo()
         {
             var loginUser = textBox_log.Text;
             var pwdUser = textBox_pwd.Text;
@@ -82,6 +91,30 @@ namespace Preform_DB
                 MessageBox.Show("Пользователь уже существует!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return true;
             } else
+            {
+                return false;
+            }
+        }
+
+        private Boolean checkUserLogin()
+        {
+            var loginUser = textBox_log.Text;
+
+            con = new MySqlConnection(stroka);
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            DataTable table = new DataTable();
+            string querystring = $"select login_user from register where login_user = '{loginUser}'";
+            MySqlCommand command = new MySqlCommand(querystring, con);
+
+            adapter.SelectCommand = command;
+            adapter.Fill(table);
+
+            if (table.Rows.Count > 0)
+            {
+                MessageBox.Show("Такой логин уже существует!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return true;
+            }
+            else
             {
                 return false;
             }
@@ -125,9 +158,10 @@ namespace Preform_DB
 
         private void label4_Click(object sender, EventArgs e)
         {
-            Form_auth form_auth = new Form_auth();
-            this.Hide();
-            form_auth.ShowDialog();
+            this.Close();
+            th = new Thread(openLog);
+            th.SetApartmentState(ApartmentState.STA);
+            th.Start();
         }
 
         private void label4_MouseEnter(object sender, EventArgs e)
@@ -148,6 +182,11 @@ namespace Preform_DB
         private void button1_MouseLeave(object sender, EventArgs e)
         {
             button1.Cursor = Cursors.Default;
+        }
+
+        private void openLog(object obj)
+        {
+            Application.Run(new Form_auth());
         }
     }
 }
