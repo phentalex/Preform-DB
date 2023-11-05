@@ -45,7 +45,7 @@ namespace Preform_DB
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             DataTable table = new DataTable();
 
-            string querystring = $"select id_user, login_user, pwd_user from register where login_user = '{loginUser}' and pwd_user = '{pwdUser}'";
+            string querystring = $"select login_user, pwd_user from register where login_user = '{loginUser}' and pwd_user = '{pwdUser}'";
 
             MySqlCommand command = new MySqlCommand(querystring, con);
             adapter.SelectCommand = command;
@@ -84,6 +84,55 @@ namespace Preform_DB
             pictureBox3.Visible = true;
 
             textBox_pwd.PasswordChar = '*';
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            Form_reg form_reg = new Form_reg();
+            this.Hide();
+            form_reg.ShowDialog();
+        }
+
+        private void label4_MouseEnter(object sender, EventArgs e)
+        {
+            label4.ForeColor = SystemColors.ControlDark;
+            label4.Cursor = Cursors.Hand;
+        }
+
+        private void label4_MouseLeave(object sender, EventArgs e)
+        {
+            label4.ForeColor = SystemColors.ControlText;
+            label4.Cursor = DefaultCursor;
+        }
+
+        private void pictureBox3_MouseEnter(object sender, EventArgs e)
+        {
+            pictureBox3.Cursor = Cursors.Hand;
+        }
+
+        private void pictureBox3_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox3.Cursor = Cursors.Default;
+        }
+
+        private void pictureBox4_MouseEnter(object sender, EventArgs e)
+        {
+            pictureBox4.Cursor = Cursors.Hand;
+        }
+
+        private void pictureBox4_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox4.Cursor = Cursors.Default;
+        }
+
+        private void button1_MouseEnter(object sender, EventArgs e)
+        {
+            button1.Cursor = Cursors.Hand;
+        }
+
+        private void button1_MouseLeave(object sender, EventArgs e)
+        {
+            button1.Cursor = Cursors.Default;
         }
     }
 }

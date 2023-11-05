@@ -18,6 +18,7 @@ namespace Preform_DB
         public Form2()
         {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
         }
 
         private string stroka = Form1.stroka;

@@ -12,6 +12,7 @@ namespace Preform_DB
         public Form1()
         {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
         }
 
         public static string stroka = "Server=localhost,3006;Database=preform;Uid=root;pwd=3128";
@@ -45,6 +46,26 @@ namespace Preform_DB
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button1_MouseEnter(object sender, EventArgs e)
+        {
+            button1.Cursor = Cursors.Hand;
+        }
+
+        private void button1_MouseLeave(object sender, EventArgs e)
+        {
+            button1.Cursor = Cursors.Default;
+        }
+
+        private void button2_MouseEnter(object sender, EventArgs e)
+        {
+            button1.Cursor = Cursors.Hand;
+        }
+
+        private void button2_MouseLeave(object sender, EventArgs e)
+        {
+            button1.Cursor = Cursors.Default;
         }
     }
 }
