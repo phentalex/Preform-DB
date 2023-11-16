@@ -16,12 +16,12 @@ namespace Preform_DB
             StartPosition = FormStartPosition.CenterScreen;
         }
 
-        public static string stroka = "Server = 185.253.34.40,3323;" + "DATABASE = u304540_prefrom;" + "UID = u304540_admin;" + "PASSWORD = admin123;" + "connection timeout = 180";
+        public static string myport = "Server = server5.hosting.reg.ru,3306;" + "DATABASE = u2327525_preform;" + "UID = u2327525_admin;" + "PASSWORD = admin123;" + "connection timeout = 180";
 
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using (MySqlConnection con = new MySqlConnection(stroka))
+            using (MySqlConnection con = new MySqlConnection(myport))
             {
                 try
                 {

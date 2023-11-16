@@ -26,7 +26,7 @@ namespace Preform_DB
 
         Thread th;
 
-        private string stroka = Form1.stroka;
+        private string stroka = Form1.myport;
 
         MySqlConnection con = null;
 

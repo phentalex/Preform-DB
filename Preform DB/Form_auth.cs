@@ -22,7 +22,7 @@ namespace Preform_DB
             StartPosition = FormStartPosition.CenterScreen;
         }
 
-        private string stroka = Form1.stroka;
+        private string stroka = Form1.myport;
 
         private MySqlConnection con = null;
 
