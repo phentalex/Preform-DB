@@ -21,13 +21,13 @@ namespace Preform_DB
             StartPosition = FormStartPosition.CenterScreen;
         }
 
-        private string stroka = Form1.myport;
+        private string myport = Form_auth.myport;
 
         private MySqlConnection con = null;
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            con = new MySqlConnection(stroka);
+            con = new MySqlConnection(myport);
             con.Open();
         }
 

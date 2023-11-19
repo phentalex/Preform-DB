@@ -22,7 +22,7 @@ namespace Preform_DB
             StartPosition = FormStartPosition.CenterScreen;
         }
 
-        private string stroka = Form1.myport;
+        public static string myport = "server = 31.31.198.106,3306; database = u2327525_preform; uid = u2327525_admin; password = admin123; connection timeout = 180";
 
         private MySqlConnection con = null;
 
@@ -33,7 +33,7 @@ namespace Preform_DB
             textBox_log.MaxLength = 50;
             textBox_pwd.MaxLength = 50;
 
-            con = new MySqlConnection(stroka);
+            con = new MySqlConnection(myport);
             con.Open();
         }
 

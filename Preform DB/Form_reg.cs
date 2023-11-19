@@ -26,7 +26,7 @@ namespace Preform_DB
 
         Thread th;
 
-        private string stroka = Form1.myport;
+        private string myport = Form_auth.myport;
 
         MySqlConnection con = null;
 
@@ -40,7 +40,7 @@ namespace Preform_DB
 
         private void button1_Click(object sender, EventArgs e)
         {
-            con = new MySqlConnection(stroka);
+            con = new MySqlConnection(myport);
 
             var loginUser = textBox_log.Text;
             var pwdUser = textBox_pwd.Text;
@@ -77,7 +77,7 @@ namespace Preform_DB
             var loginUser = textBox_log.Text;
             var pwdUser = textBox_pwd.Text;
 
-            con = new MySqlConnection(stroka);
+            con = new MySqlConnection(myport);
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             DataTable table = new DataTable();
             string querystring = $"select login_user, pwd_user from register where login_user = '{loginUser}' and pwd_user = '{pwdUser}'";
@@ -100,7 +100,7 @@ namespace Preform_DB
         {
             var loginUser = textBox_log.Text;
 
-            con = new MySqlConnection(stroka);
+            con = new MySqlConnection(myport);
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             DataTable table = new DataTable();
             string querystring = $"select login_user from register where login_user = '{loginUser}'";
