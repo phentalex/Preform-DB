@@ -23,8 +23,22 @@ namespace Preform_DB
         }
 
         public static string myport = "server = 31.31.198.106,3306; database = u2327525_preform; uid = u2327525_admin; password = admin123; connection timeout = 180";
-
-        private MySqlConnection con = null;
+        
+        public static MySqlConnection con = new MySqlConnection(myport);
+        public static bool ConnectionCheck()
+        {
+            try
+            {
+                con.Open();
+                con.Close();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        
 
         private void Form_auth_Load(object sender, EventArgs e)
         {
@@ -32,15 +46,22 @@ namespace Preform_DB
             pictureBox4.Visible = false;
             textBox_log.MaxLength = 50;
             textBox_pwd.MaxLength = 50;
-
-            con = new MySqlConnection(myport);
-            con.Open();
+            if (ConnectionCheck() == true)
+            {
+                MessageBox.Show("Соединение с базой: Установлено!", "Успех!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Соединение с базой: Не установлено!", "Успех!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             var loginUser = textBox_log.Text;
             var pwdUser = textBox_pwd.Text;
+
+            con.Open();
 
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             DataTable table = new DataTable();
@@ -55,7 +76,7 @@ namespace Preform_DB
             {
                 MessageBox.Show("Вы успешно вошли!", "Успех!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
-                th = new Thread(openTable);
+                th = new Thread(openMain);
                 th.SetApartmentState(ApartmentState.STA);
                 th.Start();
                 con.Close();
@@ -65,16 +86,17 @@ namespace Preform_DB
             }
         }
 
-        public void openTable(object obj)
+        public void openMain(object obj)
         {
-            Application.Run(new Form2());
+            Application.Run(new Form_main());
         }
 
+        //***
         public void openReg(object obj)
         {
             Application.Run(new Form_reg());
         }
-
+        //***
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             pictureBox3.Visible = false;
@@ -97,18 +119,6 @@ namespace Preform_DB
             th = new Thread(openReg);
             th.SetApartmentState(ApartmentState.STA);
             th.Start();
-        }
-
-        private void label4_MouseEnter(object sender, EventArgs e)
-        {
-            label4.ForeColor = SystemColors.ControlDark;
-            label4.Cursor = Cursors.Hand;
-        }
-
-        private void label4_MouseLeave(object sender, EventArgs e)
-        {
-            label4.ForeColor = SystemColors.ControlText;
-            label4.Cursor = DefaultCursor;
         }
 
         private void pictureBox3_MouseEnter(object sender, EventArgs e)
